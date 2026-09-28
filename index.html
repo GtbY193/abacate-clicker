@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Abacate Clicker - um jogo clicker de abacates">
+    <title>🥑 Abacate Clicker</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <header class="topbar">
+        <div class="logo">
+            🥑 <span>Abacate Clicker</span>
+        </div>
+
+        <div class="top-actions">
+            <button id="saveBtn" class="small-btn">💾 Salvar</button>
+            <button id="resetBtn" class="small-btn danger">🗑️ Resetar</button>
+        </div>
+    </header>
+
+    <main class="game">
+
+        <!-- COLUNA ESQUERDA -->
+        <section class="left-panel">
+
+            <div class="stats">
+                <div class="stat">
+                    <span>🥑 Abacates</span>
+                    <strong id="avocadoCount">0</strong>
+                </div>
+
+                <div class="stat">
+                    <span>⚡ CPS</span>
+                    <strong id="cps">0</strong>
+                </div>
+
+                <div class="stat">
+                    <span>👆 Por clique</span>
+                    <strong id="clickPower">1</strong>
+                </div>
+            </div>
+
+            <div class="level-box">
+                <div class="level-info">
+                    <span>Nível <b id="level">1</b>/20</span>
+                    <span id="levelProgressText">0 / 100</span>
+                </div>
+
+                <div class="progress">
+                    <div id="levelProgress" class="progress-bar"></div>
+                </div>
+            </div>
+
+            <div class="click-area">
+
+                <div id="floatingNumbers" class="floating-container"></div>
+
+                <button id="avocado" class="avocado-button" aria-label="Clique no abacate">
+                    <span class="avocado-emoji">🥑</span>
+                </button>
+
+                <p class="click-hint">CLIQUE NO ABACATE!</p>
+            </div>
+
+            <div class="rebirth-box">
+                <div>
+                    <h2>🔄 Rebirth</h2>
+                    <p>
+                        Reinicie seu progresso e receba
+                        <strong>Prestígio</strong>.
+                    </p>
+                </div>
+
+                <div class="rebirth-info">
+                    <span>Prestígio: <b id="prestige">0</b></span>
+                    <span>Bônus: <b id="prestigeBonus">+0%</b></span>
+                </div>
+
+                <button id="rebirthBtn" class="rebirth-button">
+                    🔄 Fazer Rebirth
+                </button>
+
+                <small id="rebirthRequirement">
+                    Requer 1.000.000 abacates
+                </small>
+            </div>
+
+        </section>
+
+        <!-- COLUNA DIREITA -->
+        <aside class="shop">
+
+            <div class="shop-header">
+                <div>
+                    <h1>Loja</h1>
+                    <p>Construa seu império de abacates!</p>
+                </div>
+
+                <div class="shop-tabs">
+                    <button class="tab active" data-tab="buildings">
+                        🏗️ Construções
+                    </button>
+
+                    <button class="tab" data-tab="upgrades">
+                        ⬆️ Upgrades
+                    </button>
+                </div>
+            </div>
+
+            <!-- CONSTRUÇÕES -->
+            <div id="buildings" class="shop-content active"></div>
+
+            <!-- UPGRADES -->
+            <div id="upgrades" class="shop-content"></div>
+
+        </aside>
+    </main>
+
+    <footer>
+        <span>🥑 Abacate Clicker</span>
+        <span>Salvamento automático ativado</span>
+        <span id="saveStatus">Último salvamento: agora</span>
+    </footer>
+
+    <script src="js/game.js"></script>
+</body>
+</html>

@@ -1,0 +1,687 @@
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    --green-dark: #274e13;
+    --green: #4f9d20;
+    --green-light: #8bc34a;
+    --lime: #c5e86c;
+
+    --brown: #8b5a2b;
+    --cream: #fff8dc;
+    --paper: #f5edcf;
+
+    --shadow: rgba(50, 40, 20, 0.3);
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: Georgia, "Times New Roman", serif;
+    color: #3d321d;
+
+    background:
+        radial-gradient(circle at 20% 20%, rgba(255,255,255,.5), transparent 20%),
+        radial-gradient(circle at 80% 70%, rgba(139,195,74,.18), transparent 25%),
+        #e7d9ad;
+}
+
+/* =========================
+   TOPO
+========================= */
+
+.topbar {
+    height: 70px;
+    padding: 0 24px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    color: white;
+
+    background:
+        linear-gradient(#5f9f31, #376e1c);
+
+    border-bottom: 4px solid #294d13;
+    box-shadow: 0 3px 10px var(--shadow);
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: bold;
+    text-shadow: 1px 2px 0 #315519;
+}
+
+.top-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.small-btn {
+    padding: 9px 14px;
+
+    border: 2px solid #34571c;
+    border-radius: 6px;
+
+    background: #f7edc5;
+    color: #453817;
+
+    font-weight: bold;
+    cursor: pointer;
+
+    box-shadow: inset 0 1px rgba(255,255,255,.7);
+}
+
+.small-btn:hover {
+    background: white;
+}
+
+.small-btn.danger {
+    background: #e7b8a5;
+    border-color: #8b3e2c;
+}
+
+/* =========================
+   LAYOUT
+========================= */
+
+.game {
+    max-width: 1500px;
+    margin: auto;
+
+    min-height: calc(100vh - 120px);
+
+    display: grid;
+    grid-template-columns: 42% 58%;
+}
+
+/* =========================
+   PAINEL ESQUERDO
+========================= */
+
+.left-panel {
+    position: relative;
+
+    padding: 25px;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,.25),
+            rgba(255,255,255,.05)
+        );
+
+    border-right: 3px solid rgba(80,60,25,.25);
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.stat {
+    padding: 12px 8px;
+
+    text-align: center;
+
+    background: #fff6d5;
+
+    border: 2px solid #b39b63;
+    border-radius: 8px;
+
+    box-shadow: 0 2px 4px var(--shadow);
+}
+
+.stat span {
+    display: block;
+    font-size: 13px;
+}
+
+.stat strong {
+    display: block;
+    margin-top: 5px;
+
+    font-size: 20px;
+    color: var(--green-dark);
+}
+
+/* =========================
+   NÍVEL
+========================= */
+
+.level-box {
+    margin-top: 20px;
+    padding: 12px;
+
+    background: #fff7d8;
+    border: 2px solid #a89058;
+    border-radius: 8px;
+}
+
+.level-info {
+    display: flex;
+    justify-content: space-between;
+
+    margin-bottom: 7px;
+
+    font-size: 14px;
+}
+
+.progress {
+    height: 15px;
+
+    overflow: hidden;
+
+    background: #d4c49b;
+
+    border: 2px solid #927b45;
+    border-radius: 20px;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 0%;
+
+    background:
+        linear-gradient(
+            #a9e45e,
+            #559d20
+        );
+
+    transition: width .25s;
+}
+
+/* =========================
+   ABACATE
+========================= */
+
+.click-area {
+    min-height: 430px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    position: relative;
+}
+
+.avocado-button {
+    width: 280px;
+    height: 280px;
+
+    border: none;
+    background: transparent;
+
+    cursor: pointer;
+
+    filter: drop-shadow(0 15px 8px rgba(40,30,10,.35));
+
+    transition:
+        transform .08s,
+        filter .2s;
+}
+
+.avocado-button:hover {
+    transform: scale(1.04);
+}
+
+.avocado-button:active {
+    transform: scale(.91) rotate(-3deg);
+    filter: drop-shadow(0 5px 4px rgba(40,30,10,.3));
+}
+
+.avocado-emoji {
+    display: block;
+
+    font-size: 220px;
+    line-height: 1;
+
+    user-select: none;
+}
+
+.click-hint {
+    margin-top: -5px;
+
+    font-weight: bold;
+    font-size: 15px;
+
+    color: #60491f;
+}
+
+.floating-container {
+    position: absolute;
+
+    width: 100%;
+    height: 100%;
+
+    pointer-events: none;
+
+    overflow: hidden;
+}
+
+.floating-number {
+    position: absolute;
+
+    color: #386d1b;
+    font-size: 24px;
+    font-weight: bold;
+
+    text-shadow: 1px 1px #fff;
+
+    animation: floatUp 1s ease-out forwards;
+}
+
+@keyframes floatUp {
+    from {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+
+    to {
+        opacity: 0;
+        transform: translateY(-100px) scale(1.4);
+    }
+}
+
+/* =========================
+   REBIRTH
+========================= */
+
+.rebirth-box {
+    margin-top: 10px;
+    padding: 18px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #fff4c5,
+            #e8d89e
+        );
+
+    border: 3px solid #8e7137;
+    border-radius: 10px;
+
+    box-shadow: 0 3px 7px var(--shadow);
+}
+
+.rebirth-box h2 {
+    margin: 0 0 5px;
+}
+
+.rebirth-box p {
+    margin: 0 0 12px;
+    font-size: 14px;
+}
+
+.rebirth-info {
+    display: flex;
+    justify-content: space-between;
+
+    margin-bottom: 12px;
+
+    font-size: 14px;
+}
+
+.rebirth-button {
+    width: 100%;
+
+    padding: 12px;
+
+    border: 2px solid #704f17;
+    border-radius: 7px;
+
+    background:
+        linear-gradient(#f3c85c, #c89425);
+
+    color: #3f2b0b;
+
+    font-weight: bold;
+    font-size: 16px;
+
+    cursor: pointer;
+
+    box-shadow:
+        inset 0 1px rgba(255,255,255,.5),
+        0 2px 3px rgba(0,0,0,.2);
+}
+
+.rebirth-button:hover {
+    filter: brightness(1.08);
+}
+
+.rebirth-button:disabled {
+    opacity: .45;
+    cursor: not-allowed;
+}
+
+/* =========================
+   LOJA
+========================= */
+
+.shop {
+    min-width: 0;
+
+    background:
+        repeating-linear-gradient(
+            0deg,
+            rgba(255,255,255,.03),
+            rgba(255,255,255,.03) 2px,
+            transparent 2px,
+            transparent 5px
+        ),
+        #eee2bc;
+}
+
+.shop-header {
+    padding: 20px;
+
+    border-bottom: 3px solid #b29a5d;
+
+    background: #f8efcf;
+}
+
+.shop-header h1 {
+    margin: 0;
+    font-size: 28px;
+}
+
+.shop-header p {
+    margin: 4px 0 15px;
+    color: #756137;
+}
+
+.shop-tabs {
+    display: flex;
+    gap: 5px;
+}
+
+.tab {
+    padding: 9px 14px;
+
+    border: 2px solid #a18a54;
+    border-bottom: none;
+    border-radius: 6px 6px 0 0;
+
+    background: #d9c998;
+
+    cursor: pointer;
+
+    font-weight: bold;
+}
+
+.tab.active {
+    background: #fff7d8;
+}
+
+/* =========================
+   SHOP ITEMS
+========================= */
+
+.shop-content {
+    display: none;
+    padding: 15px;
+}
+
+.shop-content.active {
+    display: block;
+}
+
+.building {
+    min-height: 85px;
+
+    display: grid;
+    grid-template-columns: 65px 1fr auto;
+
+    align-items: center;
+    gap: 12px;
+
+    margin-bottom: 8px;
+    padding: 10px;
+
+    background: #fff8df;
+
+    border: 2px solid #b4a06b;
+    border-radius: 7px;
+
+    cursor: pointer;
+
+    transition: background .15s, transform .1s;
+}
+
+.building:hover {
+    background: #fffdf0;
+    transform: translateX(-2px);
+}
+
+.building.disabled {
+    opacity: .55;
+}
+
+.building-icon {
+    width: 58px;
+    height: 58px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 42px;
+
+    background: #e6d6a8;
+    border: 2px solid #a89158;
+    border-radius: 8px;
+}
+
+.building-info h3 {
+    margin: 0 0 4px;
+
+    font-size: 17px;
+}
+
+.building-info p {
+    margin: 0;
+
+    font-size: 12px;
+    color: #76643d;
+}
+
+.building-count {
+    color: #4c7e21;
+    font-weight: bold;
+}
+
+.building-buy {
+    text-align: right;
+    min-width: 105px;
+}
+
+.buy-price {
+    display: block;
+
+    margin-bottom: 5px;
+
+    font-weight: bold;
+    color: #674b19;
+}
+
+.buy-button {
+    padding: 7px 10px;
+
+    border: 2px solid #557d27;
+    border-radius: 5px;
+
+    background: #8fc64e;
+
+    color: white;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+.buy-button:hover {
+    background: #a4d961;
+}
+
+/* =========================
+   UPGRADES
+========================= */
+
+.upgrade {
+    padding: 15px;
+    margin-bottom: 10px;
+
+    background: #fff8df;
+
+    border: 2px solid #b4a06b;
+    border-radius: 8px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+}
+
+.upgrade h3 {
+    margin: 0 0 5px;
+}
+
+.upgrade p {
+    margin: 0;
+    font-size: 13px;
+    color: #76643d;
+}
+
+.upgrade button {
+    padding: 9px 12px;
+
+    border: 2px solid #557d27;
+    border-radius: 5px;
+
+    background: #8fc64e;
+    color: white;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+.upgrade button:disabled {
+    opacity: .5;
+    cursor: not-allowed;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    min-height: 50px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+
+    padding: 10px;
+
+    background: #315b18;
+
+    color: #d9edb8;
+
+    font-size: 12px;
+
+    border-top: 3px solid #223f11;
+}
+
+/* =========================
+   RESPONSIVO
+========================= */
+
+@media (max-width: 900px) {
+    .game {
+        grid-template-columns: 1fr;
+    }
+
+    .left-panel {
+        border-right: none;
+        border-bottom: 3px solid rgba(80,60,25,.25);
+    }
+
+    .click-area {
+        min-height: 360px;
+    }
+}
+
+@media (max-width: 550px) {
+    .topbar {
+        height: auto;
+        min-height: 65px;
+
+        padding: 10px;
+
+        gap: 10px;
+    }
+
+    .logo {
+        font-size: 18px;
+    }
+
+    .small-btn {
+        padding: 7px;
+        font-size: 11px;
+    }
+
+    .left-panel {
+        padding: 12px;
+    }
+
+    .stats {
+        gap: 5px;
+    }
+
+    .stat {
+        padding: 8px 3px;
+    }
+
+    .stat span {
+        font-size: 10px;
+    }
+
+    .stat strong {
+        font-size: 16px;
+    }
+
+    .avocado-button {
+        width: 220px;
+        height: 220px;
+    }
+
+    .avocado-emoji {
+        font-size: 170px;
+    }
+
+    .building {
+        grid-template-columns: 50px 1fr;
+    }
+
+    .building-icon {
+        width: 48px;
+        height: 48px;
+        font-size: 32px;
+    }
+
+    .building-buy {
+        grid-column: 2;
+        text-align: left;
+    }
+
+    footer {
+        flex-direction: column;
+        gap: 4px;
+    }
+}
